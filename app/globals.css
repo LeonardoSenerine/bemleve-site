@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Fundos escuros — marrom quente, não preto */
+  --deep:        #1E0A00;
+  --deep-mid:    #2D1200;
+  --deep-light:  #3D1A00;
+
+  /* Laranja — identidade da marca (paleta dos cardápios) */
+  --terra:        #eb6433;
+  --terra-light:  #f47c52;
+  --terra-bright: #f94617;
+  --terra-pale:   #fde8dc;
+  --terra-dark:   #c44820;
+  --terra-50:     #FFF3E8;
+  --terra-glow:   rgba(235, 100, 51, 0.25);
+
+  /* Verde — acento natural (paleta dos cardápios) */
+  --green-vivid:  #9dcd5a;
+  --green-soft:   #b6dfa4;
+  --green-pale:   #f0f8ec;
+  --green-glow:   rgba(157, 205, 90, 0.2);
+
+  /* Amarelo — destaque pontual */
+  --yellow:       #ffde59;
+
+  /* Cream — seções claras */
+  --cream:        #F5F0E8;
+  --cream-dark:   #EDE7D9;
+  --cream-warm:   #FFF3E8;
+
+  /* Texto */
+  --brown-deep:   #2C1A0E;
+  --brown-mid:    #6B3F1F;
+  --brown-soft:   #9A6B4A;
+
+  /* Verde sage — acento natural */
+  --sage:         #5C7A4E;
+  --sage-light:   #8EAD7E;
+  --sage-pale:    #E8F0E4;
+
+  /* Neutros */
+  --warm-gray:    #9A8E80;
+  --border:       #DDD5C8;
+  --offwhite:     #FDFAF6;
+
+  /* Tipografia */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Lora', Georgia, serif;
+  --font-ui:      'DM Sans', sans-serif;
+  --font-roboto:  'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FFFAF5;
+  color: #2C1A0E;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .container-site {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section-pad {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  /* Grain texture overlay */
+  .grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+}
