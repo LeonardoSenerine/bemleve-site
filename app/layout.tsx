@@ -11,7 +11,7 @@ const roboto = Roboto({
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '600'],
+  weight: ['400', '500', '600', '700', '800'],
   style: ['normal', 'italic'],
   variable: '--font-display',
   display: 'swap',
@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 
 const lora = Lora({
   subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
   variable: '--font-body',
   display: 'swap',
@@ -27,7 +27,7 @@ const lora = Lora({
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-ui',
   display: 'swap',
 })

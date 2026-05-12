@@ -1,230 +1,344 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ArrowRightIcon, Squiggle } from '../ui/Icons'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
 const ebooks = [
   {
-    emoji: '📖',
+    coverTitle: 'Marmitas\nFit em Casa',
+    coverSubtitle: 'um caderno de cozinha',
+    coverBg: '#F1E9D9',
+    coverInk: '#241108',
+    coverAccent: '#C44820',
+    chapter: 'I',
     title: 'Marmitas Fit em Casa',
-    subtitle: 'Guia Completo de Receitas',
-    description:
-      'Mais de 50 receitas fit testadas e aprovadas, com modo de preparo passo a passo, tabela nutricional e dicas de congelamento.',
+    pitch:
+      'O método que a Vera usa toda semana para deixar sete dias de marmita prontos numa tarde — com cinquenta receitas, lista de compras e cronograma.',
+    pages: '142 páginas',
     price: 'R$ 47',
-    oldPrice: 'R$ 97',
-    tag: 'Mais Vendido',
     href: '#',
   },
   {
-    emoji: '💼',
-    title: 'Monte Seu Negócio de Marmitas',
-    subtitle: 'Do Zero ao Primeiro Pedido',
-    description:
-      'O passo a passo que a Vera usou para construir um negócio de marmitas lucrativo, com mais de 202K seguidores e clientes fiéis.',
+    coverTitle: 'Do zero\nà primeira\nmarmita',
+    coverSubtitle: 'guia para empreender',
+    coverBg: '#3D2817',
+    coverInk: '#FBF6EE',
+    coverAccent: '#E8A572',
+    chapter: 'II',
+    title: 'Do Zero à Primeira Marmita',
+    pitch:
+      'Como sair de não-ter-nada para o primeiro cliente fiel. O passo a passo real — preço, fornecedor, Instagram, WhatsApp — sem rodeio motivacional.',
+    pages: '98 páginas',
     price: 'R$ 97',
-    oldPrice: 'R$ 197',
-    tag: 'Empreendedorismo',
     href: '#',
   },
 ]
-
-const fadeUp = (delay = 0) => ({
-  hidden:  { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE, delay } },
-})
 
 export default function Ebooks() {
   return (
     <section
       id="ebooks"
       className="section-pad relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #c44820 0%, #eb6433 45%, #f47c52 75%, #f99066 100%)' }}
+      style={{ background: '#A04923' }}
     >
+      {/* Textura sobre o fundo */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.5]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E\")",
+        }}
+      />
 
       <div className="container-site relative z-10">
         {/* Cabeçalho */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="mb-14 flex flex-col items-center text-center gap-4"
-        >
-          <motion.div variants={fadeUp(0)} className="flex items-center gap-3">
-            <span className="h-px w-8" style={{ backgroundColor: 'rgba(253,250,246,0.5)' }} />
-            <span style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '0.7rem',
-              letterSpacing: '0.14em',
-              color: 'rgba(253,250,246,0.75)',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-            }}>
-              Ebooks Digitais
-            </span>
-            <span className="h-px w-8" style={{ backgroundColor: 'rgba(253,250,246,0.5)' }} />
-          </motion.div>
-
-          <motion.h2
-            variants={fadeUp(0.1)}
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
-              fontWeight: 900,
-              lineHeight: 1.15,
-              color: '#FDFAF6',
-            }}
+        <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="lg:col-span-6"
           >
-            Aprenda, Crie
-            <span style={{ color: '#b6dfa4' }}> e Empreenda</span>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeUp(0.18)}
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '1rem',
-              
-              lineHeight: 1.75,
-              color: 'rgba(253,250,246,0.7)',
-              maxWidth: '32rem',
-            }}
-          >
-            O conhecimento que a Vera acumulou em anos de experiência,
-            agora acessível para você.
-          </motion.p>
-        </motion.div>
-
-        {/* Cards de Ebooks */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {ebooks.map((ebook, i) => (
-            <motion.div
-              key={ebook.title}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeUp(i * 0.1)}
-              className="flex flex-col overflow-hidden rounded-3xl"
-              style={{
-                background: 'rgba(0,0,0,0.2)',
-                border: '1px solid rgba(253,250,246,0.15)',
-                backdropFilter: 'blur(8px)',
-              }}
+            <div
+              className="flex items-center gap-3"
+              style={{ color: 'rgba(251,246,238,0.7)' }}
             >
-              {/* Capa do ebook */}
-              <div
-                className="relative flex items-center justify-center"
+              <Squiggle width={42} stroke="rgba(251,246,238,0.7)" />
+              <span
                 style={{
-                  height: '200px',
-                  background: 'rgba(0,0,0,0.2)',
-                  borderBottom: '1px solid rgba(253,250,246,0.1)',
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.74rem',
+                  letterSpacing: '0.18em',
+                  fontWeight: 500,
+                  textTransform: 'uppercase',
                 }}
               >
-                {/* "Livro" CSS */}
-                <div
-                  className="relative flex items-center justify-center"
+                Os cadernos da Vera
+              </span>
+            </div>
+
+            <h2
+              className="mt-6"
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: 600,
+                lineHeight: 1.05,
+                color: '#FBF6EE',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              O que cabe num livro,
+              <br />
+              <span style={{ fontStyle: 'italic', fontWeight: 400 }}>
+                cabe na sua cozinha.
+              </span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
+            className="lg:col-span-6 lg:pt-14"
+          >
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '1.05rem',
+                lineHeight: 1.7,
+                color: 'rgba(251,246,238,0.78)',
+                maxWidth: '28rem',
+              }}
+            >
+              Dois ebooks escritos pela Vera depois de cinco anos cozinhando
+              para gente real. Um sobre fazer marmita em casa. Outro sobre
+              transformar isso num negócio.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Cards de Ebooks */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
+          {ebooks.map((ebook, i) => (
+            <motion.article
+              key={ebook.title}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: EASE, delay: i * 0.1 }}
+              className="group flex flex-col gap-7"
+            >
+              {/* Capa do ebook — peça tipográfica real */}
+              <a
+                href={ebook.href}
+                className="block"
+                style={{ perspective: '1200px' }}
+              >
+                <motion.div
+                  whileHover={{ rotateY: -6, rotateX: 2, y: -6 }}
+                  transition={{ duration: 0.5, ease: EASE }}
+                  className="relative mx-auto"
                   style={{
-                    width: '120px',
-                    height: '150px',
-                    borderRadius: '4px 12px 12px 4px',
-                    background: 'linear-gradient(135deg, rgba(253,250,246,0.15), rgba(253,250,246,0.05))',
-                    border: '1px solid rgba(253,250,246,0.2)',
-                    boxShadow: '6px 6px 24px rgba(0,0,0,0.3), inset -3px 0 8px rgba(0,0,0,0.2)',
+                    width: '100%',
+                    maxWidth: '320px',
+                    aspectRatio: '3 / 4',
+                    background: ebook.coverBg,
+                    color: ebook.coverInk,
+                    boxShadow:
+                      '0 30px 60px -20px rgba(0,0,0,0.45), 0 18px 36px -18px rgba(0,0,0,0.25)',
+                    transformStyle: 'preserve-3d',
                   }}
                 >
-                  <span style={{ fontSize: '3rem' }}>{ebook.emoji}</span>
-                  {/* Lombada */}
+                  {/* Lombada — faixa lateral esquerda */}
                   <div
-                    className="absolute left-0 top-0 bottom-0 rounded-l"
-                    style={{ width: '10px', background: 'rgba(0,0,0,0.25)' }}
+                    aria-hidden
+                    className="absolute left-0 top-0 bottom-0"
+                    style={{
+                      width: '14px',
+                      background: 'rgba(0,0,0,0.18)',
+                      boxShadow: 'inset -2px 0 6px rgba(0,0,0,0.25)',
+                    }}
                   />
-                </div>
 
-                {/* Tag */}
-                <span
-                  className="absolute right-4 top-4 rounded-full px-3 py-1"
-                  style={{
-                    fontFamily: 'var(--font-ui)',
-                    fontSize: '0.65rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.08em',
-                    background: 'rgba(253,250,246,0.2)',
-                    color: '#FDFAF6',
-                    border: '1px solid rgba(253,250,246,0.25)',
-                  }}
-                >
-                  {ebook.tag}
-                </span>
-              </div>
+                  {/* Filete decorativo */}
+                  <div
+                    aria-hidden
+                    className="absolute"
+                    style={{
+                      top: '20px',
+                      bottom: '20px',
+                      left: '28px',
+                      right: '20px',
+                      border: `1px solid ${ebook.coverAccent}55`,
+                    }}
+                  />
 
-              {/* Conteúdo */}
-              <div className="flex flex-1 flex-col gap-4 p-6">
-                <div>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.7rem', color: 'rgba(253,250,246,0.55)', letterSpacing: '0.08em', marginBottom: '4px' }}>
-                    {ebook.subtitle}
-                  </p>
-                  <h3 style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '1.35rem',
-                    fontWeight: 900,
-                    color: '#FDFAF6',
-                    lineHeight: 1.2,
-                  }}>
+                  {/* Conteúdo da capa */}
+                  <div className="absolute inset-0 flex flex-col justify-between px-9 py-10 pl-12">
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-ui)',
+                        fontSize: '0.65rem',
+                        letterSpacing: '0.22em',
+                        fontWeight: 500,
+                        textTransform: 'uppercase',
+                        color: ebook.coverAccent,
+                      }}
+                    >
+                      Bem Leve · {ebook.chapter}
+                    </div>
+
+                    <div>
+                      <p
+                        style={{
+                          fontFamily: 'var(--font-display)',
+                          fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                          fontWeight: 600,
+                          lineHeight: 1.05,
+                          letterSpacing: '-0.02em',
+                          whiteSpace: 'pre-line',
+                        }}
+                      >
+                        {ebook.coverTitle}
+                      </p>
+                      <p
+                        className="mt-3"
+                        style={{
+                          fontFamily: 'var(--font-display)',
+                          fontStyle: 'italic',
+                          fontSize: '0.9rem',
+                          fontWeight: 400,
+                          color: ebook.coverAccent,
+                        }}
+                      >
+                        {ebook.coverSubtitle}
+                      </p>
+                    </div>
+
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-ui)',
+                        fontSize: '0.7rem',
+                        fontWeight: 500,
+                        letterSpacing: '0.08em',
+                        opacity: 0.65,
+                      }}
+                    >
+                      por Vera Senerine
+                    </div>
+                  </div>
+                </motion.div>
+              </a>
+
+              {/* Texto descritivo abaixo da capa */}
+              <div className="flex flex-col gap-3">
+                <div className="flex items-baseline gap-3">
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontStyle: 'italic',
+                      fontSize: '1rem',
+                      color: 'rgba(251,246,238,0.55)',
+                    }}
+                  >
+                    {ebook.chapter}.
+                  </span>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.5rem',
+                      fontWeight: 600,
+                      color: '#FBF6EE',
+                      lineHeight: 1.15,
+                      letterSpacing: '-0.015em',
+                    }}
+                  >
                     {ebook.title}
                   </h3>
                 </div>
 
-                <p style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.9rem',
-                  lineHeight: 1.75,
-                  color: 'rgba(253,250,246,0.65)',
-                }}>
-                  {ebook.description}
+                <p
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.96rem',
+                    lineHeight: 1.65,
+                    color: 'rgba(251,246,238,0.72)',
+                  }}
+                >
+                  {ebook.pitch}
                 </p>
 
-                {/* Preço e CTA */}
-                <div className="mt-auto flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(253,250,246,0.1)' }}>
-                  <div className="flex flex-col">
-                    <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: 'rgba(253,250,246,0.4)', textDecoration: 'line-through' }}>
-                      {ebook.oldPrice}
-                    </span>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', fontWeight: 900, color: '#FDFAF6', lineHeight: 1 }}>
+                {/* Linha-base: páginas, preço, CTA */}
+                <div
+                  className="mt-4 flex items-center justify-between pt-4"
+                  style={{ borderTop: '1px solid rgba(251,246,238,0.18)' }}
+                >
+                  <div className="flex items-baseline gap-3">
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '1.5rem',
+                        fontWeight: 600,
+                        color: '#FBF6EE',
+                        letterSpacing: '-0.01em',
+                      }}
+                    >
                       {ebook.price}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-ui)',
+                        fontSize: '0.74rem',
+                        color: 'rgba(251,246,238,0.5)',
+                      }}
+                    >
+                      {ebook.pages}
                     </span>
                   </div>
 
                   <motion.a
                     href={ebook.href}
-                    whileHover={{ scale: 1.04, backgroundColor: 'rgba(253,250,246,0.25)' }}
-                    whileTap={{ scale: 0.97 }}
-                    className="inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium tracking-wide transition-colors"
+                    whileHover={{ x: 4 }}
+                    className="inline-flex items-center gap-2"
                     style={{
-                      backgroundColor: 'rgba(253,250,246,0.15)',
-                      border: '1px solid rgba(253,250,246,0.3)',
-                      color: '#FDFAF6',
+                      color: '#FBF6EE',
                       fontFamily: 'var(--font-ui)',
-                      fontSize: '0.875rem',
+                      fontSize: '0.86rem',
+                      fontWeight: 600,
+                      borderBottom: '1px solid rgba(251,246,238,0.4)',
+                      paddingBottom: '4px',
                     }}
                   >
-                    Quero comprar →
+                    Quero esse caderno
+                    <ArrowRightIcon size={14} />
                   </motion.a>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
-        {/* Aviso de entrega digital */}
+        {/* Aviso de entrega — sutil */}
         <motion.p
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          variants={fadeUp(0.3)}
-          className="mt-10 text-center"
-          style={{ fontFamily: 'var(--font-ui)', fontSize: '0.8rem', color: 'rgba(253,250,246,0.45)' }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-14 text-center"
+          style={{
+            fontFamily: 'var(--font-ui)',
+            fontSize: '0.8rem',
+            color: 'rgba(251,246,238,0.5)',
+            letterSpacing: '0.04em',
+          }}
         >
-          📩 Entrega imediata por e-mail após confirmação do pagamento
+          Entrega digital, no e-mail, logo após o pagamento.
         </motion.p>
       </div>
     </section>

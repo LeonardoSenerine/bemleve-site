@@ -1,44 +1,56 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { InstagramIcon, Squiggle, StarIcon } from '../ui/Icons'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
 const testimonials = [
   {
-    text: 'Perdi 8kg sem passar fome! As marmitas da Vera são incríveis, tem sabor e são super saudáveis. Não consigo mais imaginar minha semana sem elas.',
-    name: 'Mariana S.',
-    handle: '@mariana_fit_sp',
-    avatar: '👩',
-    stars: 5,
+    text:
+      'Comprei a primeira semana só pra testar. Faz quase um ano que não faço mais o jantar. A de estrogonofe de frango com arroz integral é a que minha filha pede.',
+    name: 'Mariana Souza',
+    role: 'Cliente desde 2024',
+    place: 'Itatiba, SP',
+    initials: 'MS',
   },
   {
-    text: 'Praticidade que me salvou! Trabalho o dia todo e quando chego em casa é só descongelar. A qualidade é impecável e o atendimento da Vera é nota 10.',
-    name: 'Roberto C.',
-    handle: '@roberto_saude',
-    avatar: '👨',
-    stars: 5,
+    text:
+      'Trabalho na obra e levo marmita todo dia. A diferença é que dá pra esquentar no microondas mesmo, no café da padaria. Não fica feio, não fica seco. É comida, comida.',
+    name: 'Roberto Carneiro',
+    role: 'Cliente há 2 anos',
+    place: 'Bragança Paulista, SP',
+    initials: 'RC',
   },
   {
-    text: 'Comprei o ebook de receitas e revolucionou minha cozinha. Aprendi a fazer pratos incríveis com poucos ingredientes. Indico para todo mundo!',
-    name: 'Fernanda L.',
-    handle: '@fer_cozinha_fit',
-    avatar: '👩‍🦱',
-    stars: 5,
+    text:
+      'Comprei o ebook esperando umas dez receitas e umas dicas. Acabei montando um cardápio mensal pra família inteira. Vale dez vezes o que custa.',
+    name: 'Fernanda Lima',
+    role: 'Comprou o ebook',
+    place: 'Jundiaí, SP',
+    initials: 'FL',
   },
 ]
 
 const fadeUp = (delay = 0) => ({
-  hidden:  { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE, delay } },
+  hidden:  { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE, delay } },
 })
 
 export default function Testimonials() {
   return (
     <section
       className="section-pad relative overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #FFFAF5 0%, #F5F0E8 100%)' }}
+      style={{ background: '#FBF6EE' }}
     >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")",
+        }}
+      />
 
       <div className="container-site relative z-10">
         {/* Cabeçalho */}
@@ -46,136 +58,164 @@ export default function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mb-14 flex flex-col items-center text-center gap-4"
+          className="mb-14 flex flex-col items-start gap-5 lg:max-w-2xl"
         >
-          <motion.div variants={fadeUp(0)} className="flex items-center gap-3">
-            <span className="h-px w-8" style={{ backgroundColor: '#eb6433' }} />
+          <motion.div
+            variants={fadeUp(0)}
+            className="flex items-center gap-3"
+            style={{ color: '#C44820' }}
+          >
+            <Squiggle width={42} stroke="#C44820" />
             <span style={{
               fontFamily: 'var(--font-ui)',
-              fontSize: '0.7rem',
-              letterSpacing: '0.14em',
-              color: '#eb6433',
+              fontSize: '0.74rem',
+              letterSpacing: '0.18em',
+              color: '#C44820',
               fontWeight: 500,
               textTransform: 'uppercase',
             }}>
-              Depoimentos
+              Quem já provou
             </span>
-            <span className="h-px w-8" style={{ backgroundColor: '#eb6433' }} />
           </motion.div>
 
           <motion.h2
             variants={fadeUp(0.1)}
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
-              fontWeight: 900,
-              lineHeight: 1.15,
-              color: '#2C1A0E',
+              fontSize: 'clamp(2rem, 4vw, 2.85rem)',
+              fontWeight: 600,
+              lineHeight: 1.05,
+              color: '#241108',
+              letterSpacing: '-0.02em',
             }}
           >
-            Quem prova,
-            <span style={{ color: '#5a8c2a' }}> não larga.</span>
-          </motion.h2>
-
-          {/* Avaliação geral */}
-          <motion.div variants={fadeUp(0.2)} className="flex items-center gap-2">
-            <div className="flex gap-1">
-              {[1,2,3,4,5].map((s) => (
-                <span key={s} style={{ color: '#eb6433', fontSize: '1.1rem' }}>★</span>
-              ))}
-            </div>
-            <span style={{ fontFamily: 'var(--font-ui)', fontSize: '0.85rem', color: '#6B3F1F' }}>
-              5.0 · +500 avaliações
+            Comida que volta a ser
+            <span style={{ fontStyle: 'italic', fontWeight: 400 }}>
+              {' '}o assunto da casa.
             </span>
-          </motion.div>
+          </motion.h2>
         </motion.div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
-            <motion.div
-              key={t.handle}
+            <motion.figure
+              key={t.name}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={fadeUp(i * 0.1)}
-              className="flex flex-col gap-5 rounded-3xl p-6"
+              className="flex flex-col gap-6 p-7"
               style={{
-                background: '#FDFAF6',
-                border: '1px solid rgba(196,82,26,0.12)',
-                boxShadow: '0 4px 24px rgba(44,26,14,0.07)',
+                background: '#FFFCF6',
+                border: '1px solid rgba(92,58,31,0.14)',
+                borderRadius: '4px',
               }}
             >
-              {/* Estrelas */}
-              <div className="flex gap-1">
-                {Array.from({ length: t.stars }).map((_, s) => (
-                  <span key={s} style={{ color: '#eb6433', fontSize: '0.95rem' }}>★</span>
-                ))}
+              {/* Aspas decorativas */}
+              <div
+                aria-hidden
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '3rem',
+                  fontWeight: 600,
+                  color: '#C44820',
+                  lineHeight: 0.5,
+                  height: '1rem',
+                }}
+              >
+                “
               </div>
 
               {/* Texto */}
-              <p style={{
+              <blockquote style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: '0.95rem',
-                
-                lineHeight: 1.8,
-                color: '#6B3F1F',
+                fontSize: '1rem',
+                lineHeight: 1.7,
+                color: '#3D2817',
                 flex: 1,
               }}>
-                "{t.text}"
-              </p>
+                {t.text}
+              </blockquote>
 
               {/* Autor */}
-              <div className="flex items-center gap-3" style={{ borderTop: '1px solid rgba(196,82,26,0.1)', paddingTop: '1rem' }}>
+              <figcaption
+                className="flex items-center gap-3 pt-5"
+                style={{ borderTop: '1px solid rgba(92,58,31,0.14)' }}
+              >
                 <div
-                  className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-xl"
-                  style={{ background: '#F5DDD2' }}
+                  className="flex h-10 w-10 flex-shrink-0 items-center justify-center"
+                  style={{
+                    background: '#F1E0CF',
+                    color: '#C44820',
+                    borderRadius: '50%',
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.78rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.04em',
+                  }}
                 >
-                  {t.avatar}
+                  {t.initials}
                 </div>
-                <div>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.85rem', fontWeight: 900, color: '#2C1A0E' }}>
+                <div className="flex flex-col">
+                  <span style={{
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.86rem',
+                    fontWeight: 600,
+                    color: '#241108',
+                  }}>
                     {t.name}
-                  </p>
-                  <p style={{ fontFamily: 'var(--font-ui)', fontSize: '0.75rem', color: '#eb6433' }}>
-                    {t.handle}
-                  </p>
+                  </span>
+                  <span style={{
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '0.72rem',
+                    color: '#9A6B4A',
+                  }}>
+                    {t.role} · {t.place}
+                  </span>
                 </div>
-              </div>
-            </motion.div>
+              </figcaption>
+            </motion.figure>
           ))}
         </div>
 
-        {/* CTA Instagram */}
+        {/* Linha-base com Instagram, sem stat-flex de "+500 avaliações" */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          variants={fadeUp(0.3)}
-          className="mt-12 flex flex-col items-center gap-3 text-center"
+          transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
+          className="mt-12 flex flex-col items-center gap-4 text-center"
         >
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem',  color: '#9A8E80' }}>
-            Faça parte dessa comunidade de
-            <strong style={{ color: '#eb6433' }}> +202 mil pessoas</strong>
+          <div className="flex items-center gap-1" style={{ color: '#C44820' }}>
+            {[1,2,3,4,5].map(s => <StarIcon key={s} size={14} stroke="#C44820" />)}
+          </div>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontStyle: 'italic',
+            fontSize: '1rem',
+            color: '#5C3A1F',
+            maxWidth: '28rem',
+          }}>
+            Mais 202 mil pessoas acompanham o dia a dia da Vera por lá.
           </p>
           <motion.a
             href="https://instagram.com/bemleve_marmitafit"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 rounded-full border px-7 py-3.5 font-medium tracking-wide transition-colors"
+            whileHover={{ y: -2 }}
+            className="inline-flex items-center gap-2.5 rounded-full px-7 py-3"
             style={{
-              borderColor: '#eb6433',
-              color: '#eb6433',
+              border: '1px solid rgba(36,17,8,0.4)',
+              color: '#241108',
               fontFamily: 'var(--font-ui)',
-              fontSize: '0.875rem',
+              fontSize: '0.86rem',
+              fontWeight: 600,
+              letterSpacing: '0.01em',
             }}
           >
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
-            Seguir no Instagram
+            <InstagramIcon size={15} />
+            @bemleve_marmitafit
           </motion.a>
         </motion.div>
       </div>

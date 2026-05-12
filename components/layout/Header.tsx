@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Nossa História", href: "#historia" },
-  { label: "Marmitas congeladas", href: "#produtos" },
-  { label: "Ebooks", href: "#ebooks" },
+  { label: "História", href: "#historia" },
+  { label: "Princípios", href: "#produtos" },
+  { label: "Cadernos", href: "#ebooks" },
   { label: "Contato", href: "#footer" },
 ];
 
@@ -27,46 +27,47 @@ export default function Header() {
         className="fixed left-0 top-0 z-50 w-full"
         animate={{
           backgroundColor: scrolled
-            ? "rgba(255,255,255,0.97)"
-            : "rgba(255,255,255,1)",
+            ? "rgba(251,246,238,0.96)"
+            : "rgba(251,246,238,1)",
           boxShadow: scrolled
-            ? "0 1px 0 rgba(235,100,51,0.15), 0 4px 24px rgba(44,26,14,0.08)"
-            : "0 1px 0 rgba(235,100,51,0.1)",
+            ? "0 1px 0 rgba(196,72,32,0.12), 0 6px 24px rgba(36,17,8,0.06)"
+            : "0 1px 0 transparent",
         }}
         transition={{ duration: 0.3 }}
+        style={{ backdropFilter: scrolled ? "blur(8px)" : "none" }}
       >
-        <div className="container-site flex items-center justify-between ">
+        <div className="container-site flex items-center justify-between py-2">
           {/* Logo */}
           <a href="#inicio" className="flex items-center">
             <Image
               src="/images/Logo.png"
               alt="Bem Leve Marmita Fit"
-              width={90}
-              height={90}
+              width={84}
+              height={84}
               priority
               style={{ objectFit: "contain" }}
             />
           </a>
 
           {/* Nav desktop */}
-          <nav className="hidden items-center font-bold gap-8 md:flex">
+          <nav className="hidden items-center gap-9 md:flex">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 style={{
                   fontFamily: "var(--font-ui)",
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: "#6B3F1F",
+                  fontSize: "0.92rem",
+                  fontWeight: 500,
+                  color: "#3D2817",
                   transition: "color 0.2s",
                   letterSpacing: "0.01em",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#eb6433";
+                  e.currentTarget.style.color = "#C44820";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "#6B3F1F";
+                  e.currentTarget.style.color = "#3D2817";
                 }}
               >
                 {link.label}
@@ -77,24 +78,23 @@ export default function Header() {
               href="https://wa.me/5511999999999"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full px-6 py-2.5 font-medium transition-all"
+              className="rounded-full px-6 py-2.5 transition-all"
               style={{
                 fontFamily: "var(--font-ui)",
-                fontSize: "1rem",
-                fontWeight: "700",
-                backgroundColor: "#eb6433",
-                color: "#fff",
-                boxShadow: "0 2px 12px rgba(235,100,51,0.35)",
+                fontSize: "0.88rem",
+                fontWeight: 600,
+                backgroundColor: "#241108",
+                color: "#FBF6EE",
+                boxShadow: "0 4px 14px rgba(36,17,8,0.18)",
+                letterSpacing: "0.01em",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#f94617";
-                e.currentTarget.style.boxShadow =
-                  "0 4px 20px rgba(249,70,23,0.4)";
+                e.currentTarget.style.backgroundColor = "#3D2817";
+                e.currentTarget.style.transform = "translateY(-1px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#eb6433";
-                e.currentTarget.style.boxShadow =
-                  "0 2px 12px rgba(235,100,51,0.35)";
+                e.currentTarget.style.backgroundColor = "#241108";
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               Pedir agora
@@ -110,8 +110,8 @@ export default function Header() {
             {[0, 1, 2].map((i) => (
               <span
                 key={i}
-                className="block h-0.5 w-6 rounded-full"
-                style={{ backgroundColor: "#eb6433" }}
+                className="block h-px w-6 rounded-full"
+                style={{ backgroundColor: "#241108", height: "2px" }}
               />
             ))}
           </button>
@@ -124,17 +124,17 @@ export default function Header() {
           <>
             <motion.div
               className="fixed inset-0 z-40 backdrop-blur-sm"
-              style={{ backgroundColor: "rgba(44,26,14,0.25)" }}
+              style={{ backgroundColor: "rgba(36,17,8,0.35)" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
             />
             <motion.nav
-              className="fixed right-0 top-0 z-50 flex h-full w-72 flex-col gap-8 px-8 pt-20"
+              className="fixed right-0 top-0 z-50 flex h-full w-72 flex-col gap-7 px-8 pt-20"
               style={{
-                backgroundColor: "#fff",
-                borderLeft: "2px solid rgba(235,100,51,0.15)",
+                backgroundColor: "#FBF6EE",
+                borderLeft: "1px solid rgba(196,72,32,0.18)",
               }}
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -143,7 +143,7 @@ export default function Header() {
             >
               <button
                 className="absolute right-6 top-5"
-                style={{ color: "#eb6433", fontSize: "1.2rem" }}
+                style={{ color: "#241108", fontSize: "1.2rem" }}
                 onClick={() => setMobileOpen(false)}
                 aria-label="Fechar menu"
               >
@@ -154,7 +154,7 @@ export default function Header() {
                 <Image
                   src="/images/Logo.png"
                   alt="Bem Leve"
-                  width={100}
+                  width={96}
                   height={48}
                   style={{ objectFit: "contain" }}
                 />
@@ -167,15 +167,16 @@ export default function Header() {
                   onClick={() => setMobileOpen(false)}
                   style={{
                     fontFamily: "var(--font-display)",
-                    fontSize: "1.15rem",
-                    color: "#2C1A0E",
+                    fontSize: "1.25rem",
+                    fontWeight: 500,
+                    color: "#241108",
                     transition: "color 0.2s",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#eb6433";
+                    e.currentTarget.style.color = "#C44820";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#2C1A0E";
+                    e.currentTarget.style.color = "#241108";
                   }}
                 >
                   {link.label}
@@ -186,12 +187,13 @@ export default function Header() {
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full py-3 font-medium"
+                className="mt-auto mb-8 inline-flex items-center justify-center rounded-full py-3"
                 style={{
-                  backgroundColor: "#eb6433",
-                  color: "#fff",
+                  backgroundColor: "#241108",
+                  color: "#FBF6EE",
                   fontFamily: "var(--font-ui)",
                   fontSize: "0.9rem",
+                  fontWeight: 600,
                 }}
               >
                 Pedir pelo WhatsApp

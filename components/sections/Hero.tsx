@@ -2,32 +2,24 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { WhatsappIcon, ArrowRightIcon, PinIcon } from "../ui/Icons";
+import logo from "../../public/images/VeraImage.jpeg";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const fadeUp = (delay: number) => ({
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: EASE, delay },
+    transition: { duration: 0.7, ease: EASE, delay },
   },
 });
 
 const fadeIn = (delay: number) => ({
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.55, ease: EASE, delay } },
+  visible: { opacity: 1, transition: { duration: 0.6, ease: EASE, delay } },
 });
-
-const fadeLeft = (delay: number) => ({
-  hidden: { opacity: 0, x: 48 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.65, ease: EASE, delay },
-  },
-});
-import logo from "../../public/images/VeraImage.jpeg";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -35,43 +27,48 @@ export default function Hero() {
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const blobY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
+  const photoY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
 
   return (
     <section
       ref={heroRef}
       id="inicio"
       className="relative flex min-h-[100dvh] items-center overflow-hidden"
-      style={{
-        background: "linear-gradient(160deg, #FFFAF5 0%, #F5F0E8 100%)",
-      }}
+      style={{ backgroundColor: "#FBF6EE" }}
     >
+      {/* Textura de papel sutil */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E\")",
+        }}
+      />
+
       <div className="container-site relative z-10 w-full py-28 lg:py-0">
-        <div className="flex flex-col items-center gap-14 lg:flex-row lg:gap-16">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-12">
           {/* ─── Coluna esquerda ─── */}
-          <div className="flex flex-col gap-7 lg:w-[56%]">
-            {/* Label */}
+          <div className="flex flex-col gap-8 lg:col-span-7 lg:pr-8">
+            {/* Localização */}
             <motion.div
-              variants={fadeUp(0.1)}
+              variants={fadeUp(0.05)}
               initial="hidden"
               animate="visible"
-              className="flex items-center gap-3"
+              className="flex items-center gap-2"
+              style={{ color: "#9A6B4A" }}
             >
-              <span
-                className="h-0.5 w-8 rounded-full"
-                style={{ backgroundColor: "#eb6433" }}
-              />
+              <PinIcon size={14} />
               <span
                 style={{
                   fontFamily: "var(--font-ui)",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.16em",
-                  color: "#eb6433",
-                  fontWeight: 700,
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.12em",
+                  fontWeight: 500,
                   textTransform: "uppercase",
                 }}
               >
-                Itatiba · SP — Marmitas Fit Congeladas
+                Itatiba, São Paulo
               </span>
             </motion.div>
 
@@ -79,152 +76,119 @@ export default function Hero() {
             <motion.h1
               initial="hidden"
               animate="visible"
-              style={{ lineHeight: 1.0 }}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(3rem, 6.5vw, 5.6rem)",
+                fontWeight: 600,
+                color: "#241108",
+                letterSpacing: "-0.025em",
+                lineHeight: 0.98,
+              }}
             >
-              <motion.span
-                variants={fadeUp(0.18)}
-                className="block"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(3.2rem, 7vw, 5.8rem)",
-                  fontWeight: 900,
-                  color: "#2C1A0E",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Alimentação
+              <motion.span variants={fadeUp(0.15)} className="block">
+                Comida que cuida
               </motion.span>
               <motion.span
-                variants={fadeUp(0.3)}
+                variants={fadeUp(0.28)}
                 className="block"
                 style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(3.2rem, 7vw, 5.8rem)",
-                  fontWeight: 900,
-                  color: "#eb6433",
-                  letterSpacing: "-0.02em",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  color: "#C44820",
                 }}
               >
-                que abraça.
+                de quem cozinha pra você.
               </motion.span>
             </motion.h1>
 
             {/* Subtítulo */}
             <motion.p
-              variants={fadeIn(0.44)}
+              variants={fadeIn(0.42)}
               initial="hidden"
               animate="visible"
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: "1.15rem",
+                fontSize: "1.18rem",
                 fontWeight: 400,
-                lineHeight: 1.7,
-                color: "#6B3F1F",
-                maxWidth: "36rem",
+                lineHeight: 1.65,
+                color: "#5C3A1F",
+                maxWidth: "34rem",
               }}
             >
-              Marmitas fit congeladas feitas com carinho — para quem quer comer
-              bem sem abrir mão da praticidade.
+              Marmitas congeladas feitas em panela — uma a uma, com tempero de
+              casa e ingredientes que você reconheceria na feira.
             </motion.p>
 
             {/* Botões */}
             <motion.div
-              variants={fadeIn(0.56)}
+              variants={fadeIn(0.55)}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap items-center gap-3 pt-2"
             >
               <motion.a
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.03, backgroundColor: "#f94617" }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2.5 rounded-full px-8 py-4 transition-colors"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 transition-all"
                 style={{
-                  backgroundColor: "#eb6433",
-                  color: "#fff",
+                  backgroundColor: "#241108",
+                  color: "#FBF6EE",
                   fontFamily: "var(--font-ui)",
                   fontSize: "0.9rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.02em",
-                  boxShadow: "0 6px 24px rgba(235,100,51,0.35)",
+                  fontWeight: 600,
+                  letterSpacing: "0.01em",
+                  boxShadow: "0 8px 24px rgba(36,17,8,0.18)",
                 }}
               >
-                <svg
-                  width="17"
-                  height="17"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                </svg>
+                <WhatsappIcon size={16} />
                 Pedir pelo WhatsApp
               </motion.a>
 
               <motion.a
                 href="#ebooks"
-                whileHover={{
-                  scale: 1.03,
-                  backgroundColor: "rgba(157,205,90,0.12)",
-                }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 rounded-full border-2 px-8 py-4 transition-colors"
+                whileHover={{ x: 4 }}
+                className="group inline-flex items-center gap-2 px-3 py-3.5"
                 style={{
-                  borderColor: "#9dcd5a",
-                  color: "#5a8c2a",
+                  color: "#5C3A1F",
                   fontFamily: "var(--font-ui)",
                   fontSize: "0.9rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.02em",
+                  fontWeight: 600,
+                  letterSpacing: "0.01em",
+                  borderBottom: "1px solid rgba(196,72,32,0.4)",
+                  paddingLeft: 0,
+                  paddingRight: 4,
+                  paddingBottom: 6,
                 }}
               >
-                Ver Ebooks
+                Ver ebooks da Vera
+                <ArrowRightIcon size={14} />
               </motion.a>
             </motion.div>
 
-            {/* Chips de estatísticas */}
+            {/* Linha de assinatura — números, sem chips coloridas */}
             <motion.div
-              variants={fadeIn(0.68)}
+              variants={fadeIn(0.7)}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-3"
+              className="mt-4 flex flex-wrap items-baseline gap-x-8 gap-y-3 pt-6"
+              style={{ borderTop: "1px solid rgba(196,72,32,0.15)" }}
             >
               {[
-                {
-                  num: "+202K",
-                  label: "seguidores",
-                  color: "#eb6433",
-                  bg: "rgba(235,100,51,0.1)",
-                  bd: "rgba(235,100,51,0.3)",
-                },
-                {
-                  num: "5 ★",
-                  label: "avaliação média",
-                  color: "#b07d08",
-                  bg: "rgba(255,222,89,0.22)",
-                  bd: "rgba(255,200,50,0.5)",
-                },
-                {
-                  num: "Itatiba/SP",
-                  label: "entregas na região",
-                  color: "#5a8c2a",
-                  bg: "rgba(157,205,90,0.15)",
-                  bd: "rgba(157,205,90,0.4)",
-                },
+                { num: "+2.000", label: "marmitas por mês" },
+                { num: "5 anos", label: "de cozinha" },
+                { num: "202k", label: "no Instagram" },
               ].map((s) => (
-                <div
-                  key={s.num}
-                  className="flex items-center gap-2 rounded-full px-4 py-2"
-                  style={{ background: s.bg, border: `1.5px solid ${s.bd}` }}
-                >
+                <div key={s.label} className="flex items-baseline gap-2">
                   <span
                     style={{
-                      fontFamily: "var(--font-ui)",
-                      fontSize: "0.9rem",
-                      fontWeight: 900,
-                      color: s.color,
+                      fontFamily: "var(--font-display)",
+                      fontSize: "1.35rem",
+                      fontWeight: 600,
+                      color: "#241108",
+                      letterSpacing: "-0.01em",
                     }}
                   >
                     {s.num}
@@ -232,9 +196,9 @@ export default function Hero() {
                   <span
                     style={{
                       fontFamily: "var(--font-ui)",
-                      fontSize: "0.72rem",
-                      fontWeight: 500,
-                      color: "#9A8E80",
+                      fontSize: "0.78rem",
+                      fontWeight: 400,
+                      color: "#9A6B4A",
                     }}
                   >
                     {s.label}
@@ -246,127 +210,67 @@ export default function Hero() {
 
           {/* ─── Coluna direita ─── */}
           <motion.div
-            variants={fadeLeft(0.28)}
+            variants={fadeIn(0.3)}
             initial="hidden"
             animate="visible"
-            className="relative flex justify-center lg:w-[44%]"
+            className="relative lg:col-span-5"
           >
-            <motion.div style={{ y: blobY }} className="relative">
-              {/* Blob de imagem */}
+            <motion.div style={{ y: photoY }} className="relative mx-auto" >
+              {/* Moldura editorial — pequeno offset que cria profundidade */}
               <div
-                className="relative flex items-center justify-center overflow-hidden"
+                aria-hidden
+                className="absolute"
                 style={{
-                  width: "380px",
-                  height: "460px",
-                  borderRadius: "100%",
-                  background:
-                    "linear-gradient(145deg, #fff5ee 0%, #fde8d8 50%, #fef9f5 100%)",
-                  border: "2px solid rgba(235,100,51,0.15)",
+                  inset: 0,
+                  transform: "translate(14px, 14px)",
+                  border: "1px solid rgba(196,72,32,0.35)",
+                  borderRadius: "4px",
+                }}
+              />
+              <div
+                className="relative overflow-hidden"
+                style={{
+                  borderRadius: "4px",
                   boxShadow:
-                    "0 24px 80px rgba(235,100,51,0.15), 0 4px 24px rgba(44,26,14,0.06)",
+                    "0 30px 60px -20px rgba(36,17,8,0.25), 0 18px 36px -18px rgba(36,17,8,0.15)",
                 }}
               >
-                <div className="flex flex-col items-center gap-3 ">
-                  <img src={logo.src} alt="" />
-                </div>
+                <img
+                  src={logo.src}
+                  alt="Vera Senerine na cozinha da Bem Leve"
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    height: "auto",
+                    aspectRatio: "4 / 5",
+                    objectFit: "cover",
+                  }}
+                />
               </div>
 
-              {/* Anéis */}
-              <div
-                className="absolute pointer-events-none"
-                style={{
-                  bottom: "-16px",
-                  right: "-16px",
-                  width: "130px",
-                  height: "130px",
-                  borderRadius: "50%",
-                  border: "2px solid rgba(235,100,51,0.2)",
-                  zIndex: -1,
-                }}
-              />
-              <div
-                className="absolute pointer-events-none"
-                style={{
-                  top: "-24px",
-                  left: "-24px",
-                  width: "88px",
-                  height: "88px",
-                  borderRadius: "50%",
-                  border: "1.5px solid rgba(157,205,90,0.3)",
-                  zIndex: -1,
-                }}
-              />
-
-              {/* Badge flutuante */}
+              {/* Legenda lateral, como em revista */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.85, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.5, ease: EASE }}
-                className="animate-float absolute -bottom-2 -left-8 rounded-2xl px-5 py-4 lg:-left-10"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.85, duration: 0.6 }}
+                className="absolute -left-4 top-6 hidden lg:block"
                 style={{
-                  background: "#fff",
-                  border: "1.5px solid rgba(235,100,51,0.2)",
-                  boxShadow: "0 8px 32px rgba(44,26,14,0.1)",
+                  writingMode: "vertical-rl",
+                  transform: "rotate(180deg)",
+                  fontFamily: "var(--font-ui)",
+                  fontSize: "0.68rem",
+                  fontWeight: 500,
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                  color: "#9A6B4A",
                 }}
               >
-                <p
-                  style={{
-                    fontFamily: "var(--font-ui)",
-                    fontSize: "1.7rem",
-                    fontWeight: 900,
-                    color: "#eb6433",
-                    lineHeight: 1,
-                  }}
-                >
-                  +202K
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-ui)",
-                    fontSize: "0.7rem",
-                    fontWeight: 500,
-                    color: "#9A8E80",
-                    marginTop: "2px",
-                  }}
-                >
-                  pessoas já conhecem a Bem Leve 💚
-                </p>
+                Vera Senerine — fundadora
               </motion.div>
             </motion.div>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-      >
-        <span
-          style={{
-            fontFamily: "var(--font-ui)",
-            fontSize: "0.62rem",
-            fontWeight: 700,
-            letterSpacing: "0.16em",
-            color: "rgba(44,26,14,0.3)",
-            textTransform: "uppercase",
-          }}
-        >
-          Role para ver mais
-        </span>
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            width: "1.5px",
-            height: "40px",
-            background: "linear-gradient(to bottom, #eb6433, transparent)",
-            borderRadius: "2px",
-          }}
-        />
-      </motion.div>
     </section>
   );
 }

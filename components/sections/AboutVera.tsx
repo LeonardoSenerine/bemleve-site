@@ -1,23 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SprigIcon, SnowflakeIcon, HeartLineIcon, Squiggle } from "../ui/Icons";
 import veraImage2 from "../../public/images/VeraImage2.jpeg";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const fadeUp = (delay = 0) => ({
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 22 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: EASE, delay },
+    transition: { duration: 0.7, ease: EASE, delay },
   },
 });
 
 const values = [
-  { icon: "🥦", label: "Ingredientes frescos e naturais" },
-  { icon: "❄️", label: "Congelado na hora, sabor preservado" },
-  { icon: "💛", label: "Feito com amor de verdade" },
+  {
+    Icon: SprigIcon,
+    label: "Ingredientes que você reconhece",
+    text: "Nada de nome estranho na lista. Frescos, comprados aqui da região.",
+  },
+  {
+    Icon: SnowflakeIcon,
+    label: "Congelado no ponto certo",
+    text: "Embalado quando ainda está quente da panela — o sabor não escapa.",
+  },
+  {
+    Icon: HeartLineIcon,
+    label: "Feito por uma cozinheira",
+    text: "Cada marmita passa pela mão da Vera. Sem linha de produção, sem atalho.",
+  },
 ];
 
 export default function AboutVera() {
@@ -25,116 +38,90 @@ export default function AboutVera() {
     <section
       id="historia"
       className="section-pad relative overflow-hidden"
-      style={{ background: "#EDE7D9" }}
+      style={{ background: "#F1E9D9" }}
     >
       <div className="container-site relative z-10">
-        <div className="flex flex-col items-center gap-16 lg:flex-row lg:gap-20">
-          {/* Blob de imagem — esquerda */}
+        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-20">
+          {/* Foto — esquerda */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp(0)}
-            className="flex justify-center lg:w-[44%]"
+            className="lg:col-span-5"
           >
-            <div className="relative">
+            <div className="relative mx-auto" style={{ maxWidth: "420px" }}>
+              {/* Sombra-moldura editorial */}
               <div
+                aria-hidden
+                className="absolute"
                 style={{
-                  width: "auto",
-                  height: "600px",
-                  borderRadius: "10%",
-                  background:
-                    "linear-gradient(145deg, #fff5ee 0%, #fde8d8 60%, rgba(157,205,90,0.08) 100%)",
-                  border: "1.5px solid rgba(235,100,51,0.15)",
-                  overflow: "hidden",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  gap: "12px",
+                  inset: 0,
+                  transform: "translate(-12px, 12px)",
+                  border: "1px solid rgba(92,58,31,0.3)",
+                  borderRadius: "2px",
+                }}
+              />
+              <div
+                className="relative overflow-hidden"
+                style={{
+                  borderRadius: "2px",
+                  boxShadow:
+                    "0 24px 48px -16px rgba(36,17,8,0.22), 0 12px 24px -16px rgba(36,17,8,0.12)",
                 }}
               >
                 <img
                   src={veraImage2.src}
-                  alt="Vera preparando refeições"
+                  alt="Vera preparando refeições na cozinha"
                   style={{
-                    width: "150%",
-                    height: "150%",
-                    objectFit: "contain",
+                    display: "block",
+                    width: "100%",
+                    height: "auto",
+                    aspectRatio: "4 / 5",
+                    objectFit: "cover",
                   }}
                 />
               </div>
 
-              {/* Badge de anos */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.5, ease: EASE }}
-                className="animate-float absolute -bottom-4 -right-4 flex flex-col items-center justify-center rounded-full"
+              {/* Microcaption — como rodapé de foto de revista */}
+              <div
+                className="mt-3 flex items-center gap-2"
                 style={{
-                  width: "90px",
-                  height: "90px",
-                  background: "linear-gradient(135deg, #eb6433, #f94617)",
-                  boxShadow: "0 8px 32px rgba(235,100,51,0.4)",
+                  fontFamily: "var(--font-ui)",
+                  fontSize: "0.72rem",
+                  color: "#9A6B4A",
+                  letterSpacing: "0.04em",
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: "var(--font-ui)",
-                    fontSize: "1.6rem",
-                    fontWeight: 900,
-                    color: "#fff",
-                    lineHeight: 1,
-                  }}
-                >
-                  +5
+                <span style={{ fontWeight: 600, color: "#5C3A1F" }}>
+                  Itatiba, 2020 →
                 </span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-ui)",
-                    fontSize: "0.58rem",
-                    fontWeight: 700,
-                    color: "rgba(255,255,255,0.85)",
-                    textAlign: "center",
-                    lineHeight: 1.2,
-                    marginTop: "2px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  anos de
-                  <br />
-                  experiência
-                </span>
-              </motion.div>
+                <span>Vera, na cozinha onde tudo começou.</span>
+              </div>
             </div>
           </motion.div>
 
-          {/* Conteúdo — direita */}
-          <div className="flex flex-col gap-5 lg:w-[56%]">
+          {/* Texto — direita */}
+          <div className="flex flex-col gap-7 lg:col-span-7">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              variants={fadeUp(0.1)}
+              variants={fadeUp(0.05)}
               className="flex items-center gap-3"
+              style={{ color: "#C44820" }}
             >
-              <span
-                className="h-0.5 w-8 rounded-full"
-                style={{ backgroundColor: "#eb6433" }}
-              />
+              <Squiggle width={42} stroke="#C44820" />
               <span
                 style={{
                   fontFamily: "var(--font-ui)",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.16em",
-                  color: "#eb6433",
-                  fontWeight: 700,
+                  fontSize: "0.74rem",
+                  letterSpacing: "0.18em",
+                  fontWeight: 500,
                   textTransform: "uppercase",
                 }}
               >
-                Nossa História
+                A história
               </span>
             </motion.div>
 
@@ -142,114 +129,128 @@ export default function AboutVera() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              variants={fadeUp(0.18)}
+              variants={fadeUp(0.15)}
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(2.2rem, 4.5vw, 3.2rem)",
-                fontWeight: 900,
+                fontSize: "clamp(2rem, 4.2vw, 3rem)",
+                fontWeight: 600,
                 lineHeight: 1.05,
-                color: "#2C1A0E",
+                color: "#241108",
                 letterSpacing: "-0.02em",
+                maxWidth: "30rem",
               }}
             >
-              Cozinha com alma,
-              <br />
-              <span style={{ color: "#eb6433" }}>comida de verdade.</span>
+              Tudo começou numa cozinha de
+              <span style={{ fontStyle: "italic", fontWeight: 400 }}>
+                {" "}
+                cinquenta metros quadrados.
+              </span>
             </motion.h2>
 
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={fadeUp(0.26)}
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "1.05rem",
-                fontWeight: 400,
-                lineHeight: 1.8,
-                color: "#6B3F1F",
-                maxWidth: "38rem",
-              }}
-            >
-              Tudo começou com uma missão simples: ajudar pessoas a comerem bem
-              sem abrir mão do sabor ou da praticidade. A Vera Senerine
-              transformou sua paixão pela culinária fit em um negócio que hoje
-              alcança mais de
-              <strong style={{ color: "#eb6433", fontWeight: 700 }}>
-                {" "}
-                202 mil pessoas
-              </strong>{" "}
-              no Instagram e leva marmitas nutritivas para toda a região de
-              Itatiba/SP.
-            </motion.p>
-
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={fadeUp(0.33)}
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "1.05rem",
-                fontWeight: 400,
-                lineHeight: 1.8,
-                color: "#6B3F1F",
-                maxWidth: "38rem",
-              }}
-            >
-              Cada marmita é preparada com ingredientes frescos, congelada no
-              pico do sabor e entregue pronta para você. Sem conservantes, sem
-              enrolação.
-            </motion.p>
-
-            {/* Valores */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              variants={fadeUp(0.4)}
-              className="flex flex-col gap-3 pt-2"
+              variants={fadeUp(0.25)}
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "1.06rem",
+                lineHeight: 1.75,
+                color: "#5C3A1F",
+                maxWidth: "34rem",
+              }}
             >
-              {values.map((v) => (
-                <div key={v.label} className="flex items-center gap-3">
-                  <div
-                    className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full text-base"
-                    style={{ background: "#fde8d8" }}
-                  >
-                    {v.icon}
-                  </div>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-ui)",
-                      fontSize: "0.9rem",
-                      fontWeight: 600,
-                      color: "#2C1A0E",
-                    }}
-                  >
-                    {v.label}
-                  </span>
-                </div>
-              ))}
+              <p style={{ marginBottom: "1.1rem" }}>
+                Em 2020, com a pandemia, a Vera precisou recomeçar. Cozinhou as
+                primeiras setenta marmitas no apartamento dela, com o filho por
+                perto e o freezer dividindo espaço com o sofá.
+              </p>
+              <p>
+                Cinco anos depois, são mais de duas mil marmitas saindo por mês
+                — e cada uma ainda passa pela mão dela. Esse é o trato.
+              </p>
             </motion.div>
 
-            {/* Assinatura */}
-            <motion.p
+            {/* Valores — agora com ícones próprios */}
+            <motion.ul
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              variants={fadeUp(0.48)}
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.3rem",
-                fontWeight: 700,
-                color: "#eb6433",
-                borderTop: "1px solid rgba(235,100,51,0.2)",
-                paddingTop: "1rem",
-                marginTop: "0.25rem",
-              }}
+              variants={fadeUp(0.35)}
+              className="mt-2 flex flex-col"
+              style={{ borderTop: "1px solid rgba(92,58,31,0.18)" }}
             >
-              — Vera Senerine
-            </motion.p>
+              {values.map(({ Icon, label, text }) => (
+                <li
+                  key={label}
+                  className="flex items-start gap-4 py-4"
+                  style={{ borderBottom: "1px solid rgba(92,58,31,0.18)" }}
+                >
+                  <span
+                    className="flex-shrink-0"
+                    style={{ color: "#C44820", marginTop: "2px" }}
+                  >
+                    <Icon size={22} />
+                  </span>
+                  <div>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-ui)",
+                        fontSize: "0.92rem",
+                        fontWeight: 600,
+                        color: "#241108",
+                        marginBottom: "2px",
+                      }}
+                    >
+                      {label}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "0.92rem",
+                        lineHeight: 1.55,
+                        color: "#7A553A",
+                      }}
+                    >
+                      {text}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </motion.ul>
+
+            {/* Assinatura — manuscrita, não com borda decorativa */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeUp(0.45)}
+              className="mt-2"
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontStyle: "italic",
+                  fontSize: "1.15rem",
+                  fontWeight: 500,
+                  color: "#C44820",
+                  letterSpacing: "0.01em",
+                }}
+              >
+                Vera Senerine
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-ui)",
+                  fontSize: "0.74rem",
+                  color: "#9A6B4A",
+                  letterSpacing: "0.06em",
+                  marginTop: "2px",
+                }}
+              >
+                Cozinheira e fundadora
+              </p>
+            </motion.div>
           </div>
         </div>
       </div>
