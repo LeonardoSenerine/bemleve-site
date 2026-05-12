@@ -39,9 +39,7 @@ export const metadata: Metadata = {
   keywords:
     'marmita fit, marmita congelada, itatiba, alimentação saudável, ebook receitas fit',
   icons: {
-    icon: [
-      { url: '/images/Logo.png', type: 'image/png' },
-    ],
+    icon: [{ url: '/images/Logo.png', type: 'image/png' }],
     shortcut: '/images/Logo.png',
     apple: '/images/Logo.png',
   },
@@ -66,12 +64,4 @@ export default function RootLayout({
       <body className="antialiased">{children}</body>
     </html>
   )
-}
-{`${roboto.variable} ${playfair.variable} ${lora.variable} ${dmSans.variable}`}
-    >
-      <body className="antialiased">{children}</body>
-    </html>
-  )
-}
-)
 }
