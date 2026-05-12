@@ -230,7 +230,4 @@ export default function Products() {
             Montar meu kit semanal
           </motion.a>
         </motion.div>
-      </div>
-    </section>
-  )
-}
+   

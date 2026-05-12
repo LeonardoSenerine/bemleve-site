@@ -205,6 +205,4 @@ export default function FooterSection() {
           © {new Date().getFullYear()} Bem Leve · Marmitas feitas em Itatiba/SP
         </p>
       </div>
-    </footer>
-  )
-}
+    

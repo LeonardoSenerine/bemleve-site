@@ -38,18 +38,11 @@ export const metadata: Metadata = {
     'Alimentação saudável e prática com marmitas fit congeladas. Entregamos em Itatiba e região. Conheça também nossos ebooks de receitas e negócio.',
   keywords:
     'marmita fit, marmita congelada, itatiba, alimentação saudável, ebook receitas fit',
-  icons: {
-    icon: [
-      { url: '/images/Logo.png', type: 'image/png' },
-    ],
-    shortcut: '/images/Logo.png',
-    apple: '/images/Logo.png',
-  },
   openGraph: {
     title: 'Bem Leve Marmitafit',
     description:
       'Marmitas fit congeladas feitas com carinho por Vera Senerine em Itatiba/SP.',
-    images: ['/images/Logo.png'],
+    images: ['/og-image.jpg'],
     locale: 'pt_BR',
     type: 'website',
   },
@@ -66,12 +59,4 @@ export default function RootLayout({
       <body className="antialiased">{children}</body>
     </html>
   )
-}
-{`${roboto.variable} ${playfair.variable} ${lora.variable} ${dmSans.variable}`}
-    >
-      <body className="antialiased">{children}</body>
-    </html>
-  )
-}
-)
 }
