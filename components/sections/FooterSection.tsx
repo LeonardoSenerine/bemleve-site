@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { WhatsappIcon, InstagramIcon, PinIcon } from '../ui/Icons'
 import { WHATSAPP_URL } from '@/lib/whatsapp'
-
+import logo from "../../public/images/Logo.png"
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
 const navLinks = [
@@ -48,10 +48,10 @@ export default function FooterSection() {
             letterSpacing: '-0.02em',
             maxWidth: '24rem',
           }}>
-            Manda uma mensagem.
+            Mande uma mensagem.
             <br />
             <span style={{ fontStyle: 'italic', fontWeight: 400, color: '#E8A572' }}>
-              A Vera responde.
+              Tire suas dúvidas.
             </span>
           </h2>
 
@@ -62,8 +62,7 @@ export default function FooterSection() {
             maxWidth: '26rem',
             lineHeight: 1.6,
           }}>
-            Combine seu kit semanal direto pelo WhatsApp — sem formulário,
-            sem espera, sem chatbot.
+            Monte seu kit semanal personalizado ou fale sobre os eBooks conosco.
           </p>
 
           <motion.a
@@ -84,7 +83,7 @@ export default function FooterSection() {
             }}
           >
             <WhatsappIcon size={16} stroke="#241108" />
-            Falar com a Vera
+            Falar no WhatsApp
           </motion.a>
         </motion.div>
       </div>
@@ -101,11 +100,11 @@ export default function FooterSection() {
         <div className="flex flex-col gap-3">
           <a href="#inicio">
             <Image
-              src="/images/Logo.svg"
+              src={logo.src}
               alt="Bem Leve"
               width={120}
-              height={38}
-              style={{ objectFit: 'contain', filter: 'invert(1) brightness(1.2)' }}
+              height={120}
+              
             />
           </a>
           <div

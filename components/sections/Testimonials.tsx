@@ -89,9 +89,9 @@ export default function Testimonials() {
               letterSpacing: '-0.02em',
             }}
           >
-            Comida que volta a ser
+            O que a gente
             <span style={{ fontStyle: 'italic', fontWeight: 400 }}>
-              {' '}o assunto da casa.
+              {' '}mais gosta de ouvir.
             </span>
           </motion.h2>
         </motion.div>
@@ -197,7 +197,7 @@ export default function Testimonials() {
             color: '#5C3A1F',
             maxWidth: '28rem',
           }}>
-            Mais 202 mil pessoas acompanham o dia a dia da Vera por lá.
+            Tem mais 202 mil pessoas acompanhando a gente por lá. Vem também.
           </p>
           <motion.a
             href="https://instagram.com/bemleve_marmitafit"

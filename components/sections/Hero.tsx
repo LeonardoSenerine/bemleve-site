@@ -49,9 +49,8 @@ export default function Hero() {
 
       <div className="container-site relative z-10 w-full py-28 lg:py-0">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-12">
-          {/* ─── Coluna esquerda ─── */}
+          {/* Coluna esquerda */}
           <div className="flex flex-col gap-8 lg:col-span-7 lg:pr-8">
-            {/* Localização */}
             <motion.div
               variants={fadeUp(0.05)}
               initial="hidden"
@@ -73,7 +72,6 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            {/* Título */}
             <motion.h1
               initial="hidden"
               animate="visible"
@@ -87,7 +85,7 @@ export default function Hero() {
               }}
             >
               <motion.span variants={fadeUp(0.15)} className="block">
-                Comida que cuida
+               Marmitas congeladas
               </motion.span>
               <motion.span
                 variants={fadeUp(0.28)}
@@ -98,11 +96,10 @@ export default function Hero() {
                   color: "#C44820",
                 }}
               >
-                de quem cozinha pra você.
+                com gostinho de comida caseira.
               </motion.span>
             </motion.h1>
 
-            {/* Subtítulo */}
             <motion.p
               variants={fadeIn(0.42)}
               initial="hidden"
@@ -116,11 +113,9 @@ export default function Hero() {
                 maxWidth: "34rem",
               }}
             >
-              Marmitas congeladas feitas em panela — uma a uma, com tempero de
-              casa e ingredientes que você reconheceria na feira.
+              Somos de itatiba, interior de SP, e fazemos marmitas artesanais com ingredientes frescos e temperos caseiros. Nossas receitas são inspiradas na culinária brasileira, com um toque de criatividade e muito amor. Escolha suas marmitas favoritas e receba em casa toda semana.
             </motion.p>
 
-            {/* Botões */}
             <motion.div
               variants={fadeIn(0.55)}
               initial="hidden"
@@ -164,12 +159,11 @@ export default function Hero() {
                   paddingBottom: 6,
                 }}
               >
-                Ver ebooks da Vera
+                Ver eBooks
                 <ArrowRightIcon size={14} />
               </motion.a>
             </motion.div>
 
-            {/* Linha de assinatura — números, sem chips coloridas */}
             <motion.div
               variants={fadeIn(0.7)}
               initial="hidden"
@@ -180,7 +174,7 @@ export default function Hero() {
               {[
                 { num: "+2.000", label: "marmitas por mês" },
                 { num: "5 anos", label: "de cozinha" },
-                { num: "202k", label: "no Instagram" },
+                { num: "+200k", label: "no Instagram" },
               ].map((s) => (
                 <div key={s.label} className="flex items-baseline gap-2">
                   <span
@@ -209,15 +203,14 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ─── Coluna direita ─── */}
+          {/* Coluna direita */}
           <motion.div
             variants={fadeIn(0.3)}
             initial="hidden"
             animate="visible"
             className="relative lg:col-span-5"
           >
-            <motion.div style={{ y: photoY }} className="relative mx-auto" >
-              {/* Moldura editorial — pequeno offset que cria profundidade */}
+            <motion.div style={{ y: photoY }} className="relative mx-auto">
               <div
                 aria-hidden
                 className="absolute"
@@ -249,7 +242,6 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Legenda lateral, como em revista */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

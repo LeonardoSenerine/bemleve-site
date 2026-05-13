@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SprigIcon, SnowflakeIcon, HeartLineIcon, Squiggle } from "../ui/Icons";
-import veraImage2 from "../../public/images/VeraImage2.jpeg";
+import veraImage2 from "../../public/images/VeraCozinha.jpeg";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -18,8 +18,8 @@ const fadeUp = (delay = 0) => ({
 const values = [
   {
     Icon: SprigIcon,
-    label: "Ingredientes que você reconhece",
-    text: "Nada de nome estranho na lista. Frescos, comprados aqui da região.",
+    label: "Ingredientes frescos e saudáveis",
+    text: "A gente escolhe cada fornecedor a dedo, e só usa o que a gente comeria na nossa casa.",
   },
   {
     Icon: SnowflakeIcon,
@@ -29,7 +29,7 @@ const values = [
   {
     Icon: HeartLineIcon,
     label: "Feito por uma cozinheira",
-    text: "Cada marmita passa pela mão da Vera. Sem linha de produção, sem atalho.",
+    text: "Todos os nossos preparos são feitos à mão, com cuidado e atenção, por uma mulher que ama cozinhar.",
   },
 ];
 
@@ -96,7 +96,7 @@ export default function AboutVera() {
                 <span style={{ fontWeight: 600, color: "#5C3A1F" }}>
                   Itatiba, 2020 →
                 </span>
-                <span>Vera, na cozinha onde tudo começou.</span>
+                <span>A Vera, na cozinha onde tudo começou.</span>
               </div>
             </div>
           </motion.div>
@@ -121,7 +121,7 @@ export default function AboutVera() {
                   textTransform: "uppercase",
                 }}
               >
-                A história
+                A nossa história
               </span>
             </motion.div>
 
@@ -140,10 +140,10 @@ export default function AboutVera() {
                 maxWidth: "30rem",
               }}
             >
-              Tudo começou numa cozinha de
+              Nós começamos
               <span style={{ fontStyle: "italic", fontWeight: 400 }}>
                 {" "}
-                cinquenta metros quadrados.
+                em um apartamento de 40m²
               </span>
             </motion.h2>
 
@@ -161,13 +161,14 @@ export default function AboutVera() {
               }}
             >
               <p style={{ marginBottom: "1.1rem" }}>
-                Em 2020, com a pandemia, a Vera precisou recomeçar. Cozinhou as
-                primeiras setenta marmitas no apartamento dela, com o filho por
-                perto e o freezer dividindo espaço com o sofá.
+                Em 2020, com a pandemia, tive que me reiventar. A cozinha era meu lugar favorito da casa, então comecei a fazer marmitas congeladas para vender. O que era um plano B virou o que eu amo fazer de verdade — cozinhar para outras pessoas.
+              </p>
+              <p style={{ marginBottom: "1.1rem" }}>
+               Comecei em um apartamento de 40m², com uma panela só. Hoje, a gente tem uma cozinha maior, mas o cuidado e o amor continuam os mesmos. Cada marmita é feita à mão, com ingredientes frescos e muito carinho, pra chegar na casa de cada cliente com gostinho de comida caseira.
               </p>
               <p>
-                Cinco anos depois, são mais de duas mil marmitas saindo por mês
-                — e cada uma ainda passa pela mão dela. Esse é o trato.
+                A gente faz isso porque ama fazer. Não tem segredo — é só
+                cuidado, ingrediente bom e o tempo que cada receita pede.
               </p>
             </motion.div>
 
@@ -219,38 +220,8 @@ export default function AboutVera() {
               ))}
             </motion.ul>
 
-            {/* Assinatura — manuscrita, não com borda decorativa */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={fadeUp(0.45)}
-              className="mt-2"
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontStyle: "italic",
-                  fontSize: "1.15rem",
-                  fontWeight: 500,
-                  color: "#C44820",
-                  letterSpacing: "0.01em",
-                }}
-              >
-                Vera Senerine
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-ui)",
-                  fontSize: "0.74rem",
-                  color: "#9A6B4A",
-                  letterSpacing: "0.06em",
-                  marginTop: "2px",
-                }}
-              >
-                Cozinheira e fundadora
-              </p>
-            </motion.div>
+            {/* Assinatura */}
+          
           </div>
         </div>
       </div>

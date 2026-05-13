@@ -15,7 +15,7 @@ const ebooks = [
     chapter: 'I',
     title: 'Marmitas Fit em Casa',
     pitch:
-      'O método que a Vera usa toda semana para deixar sete dias de marmita prontos numa tarde — com cinquenta receitas, lista de compras e cronograma.',
+      'O jeito que a Vera organiza a cozinha pra deixar a semana inteira pronta numa tarde só. Cinquenta receitas que a gente faz aqui, lista de compras e cronograma — tudo passado a limpo.',
     pages: '142 páginas',
     price: 'R$ 47',
     href: '#',
@@ -29,7 +29,7 @@ const ebooks = [
     chapter: 'II',
     title: 'Do Zero à Primeira Marmita',
     pitch:
-      'Como sair de não-ter-nada para o primeiro cliente fiel. O passo a passo real — preço, fornecedor, Instagram, WhatsApp — sem rodeio motivacional.',
+      'Como a Vera saiu de zero pro primeiro cliente fiel. Preço, fornecedor, Instagram, WhatsApp — o passo a passo que a gente seguiu, sem rodeio motivacional. Real.',
     pages: '98 páginas',
     price: 'R$ 97',
     href: '#',
@@ -92,10 +92,10 @@ export default function Ebooks() {
                 letterSpacing: '-0.02em',
               }}
             >
-              O que cabe num livro,
+              A Vera escreveu
               <br />
               <span style={{ fontStyle: 'italic', fontWeight: 400 }}>
-                cabe na sua cozinha.
+                o que aprendeu na panela.
               </span>
             </h2>
           </motion.div>
@@ -116,9 +116,9 @@ export default function Ebooks() {
                 maxWidth: '28rem',
               }}
             >
-              Dois ebooks escritos pela Vera depois de cinco anos cozinhando
-              para gente real. Um sobre fazer marmita em casa. Outro sobre
-              transformar isso num negócio.
+              São dois cadernos da nossa cozinha. Um pra quem quer fazer
+              marmita em casa, outro pra quem quer transformar isso num
+              negócio. Tudo o que a gente queria ter sabido quando começou.
             </p>
           </motion.div>
         </div>

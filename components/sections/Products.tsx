@@ -10,26 +10,26 @@ const principles = [
   {
     n: '01',
     Icon: SprigIcon,
-    label: 'O que entra na panela',
-    title: 'Tempero é coisa de quem cozinha.',
+    label: 'Aqui na cozinha',
+    title: 'A gente compra fresco. Sempre.',
     body:
-      'Ingrediente fresco, comprado na semana, cortado na hora. A Vera escolhe pessoalmente os fornecedores — alface tem que vir com a terra ainda úmida, frango tem que ser do dia. O resto é técnica e fogo na medida.',
+      'Toda semana fazemos pedido de ingredientes fresquinhos, escolhidos a dedo. A gente tem uma relação super próxima com cada fornecedor, e só compra o que a gente comeria na nossa casa. É o primeiro passo pra garantir que cada marmita chegue na sua casa com gostinho de comida caseira.',
   },
   {
     n: '02',
     Icon: ClockIcon,
     label: 'Como chega à sua mesa',
-    title: 'Dez minutos entre o freezer e a fome.',
+    title: 'Sete minutos entre o freezer e a fome.',
     body:
-      'Você tira do congelador, esquenta no micro-ondas ou no banho-maria, e come. Não tem montagem, não tem louça, não tem culpa. Tem tempo de volta — pra usar com o que importa.',
+      'A gente faz pra resolver seu dia, não pra te dar mais um problema. Você tira do congelador, esquenta no micro-ondas ou banho-maria, e come. Sem louça suja, sem montagem, sem culpa, comendo bem, comendo gostoso, e pronto pra aproveitar o que importa.',
   },
   {
     n: '03',
     Icon: HeartLineIcon,
-    label: 'O que muda quando você come bem',
-    title: 'Alimentação não é dieta — é base.',
+    label: 'Por que fazemos isso',
+    title: 'Marmita é cuidado — e cuidado a gente leva a sério.',
     body:
-      'Você sente no sono, na disposição, na pele, no humor. Comer bem todos os dias é o tipo de cuidado que parece pequeno e muda tudo no fim do mês. A Bem Leve existe pra que esse cuidado caiba na sua rotina.',
+      'Alimentação não é dieta, é a base de como você se sente todos os dias. A gente acredita nisso, e por isso faz cada marmita como se fosse pra alguém da família. É o jeito da Bem Leve. Sempre foi.',
   },
 ]
 
@@ -40,7 +40,6 @@ export default function Products() {
       className="section-pad relative overflow-hidden"
       style={{ background: '#FBF6EE' }}
     >
-      {/* Textura de papel */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.4]"
@@ -51,7 +50,6 @@ export default function Products() {
       />
 
       <div className="container-site relative z-10">
-        {/* Cabeçalho */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -86,11 +84,13 @@ export default function Products() {
                 letterSpacing: '-0.02em',
               }}
             >
-              O que faz uma marmita
+              O que levamos a sério
               <span style={{ fontStyle: 'italic', fontWeight: 400 }}>
-                {' '}realmente boa.
+                {' '}
+                aqui dentro.
               </span>
             </h2>
+           
 
             <p
               className="mt-6"
@@ -102,12 +102,10 @@ export default function Products() {
                 maxWidth: '24rem',
               }}
             >
-              Não é estética, não é truque de embalagem. São três coisas — e a
-              Vera leva todas a sério desde a primeira marmita que vendeu.
+              Sempre notei que as pessoas têm uma relação complicada com a comida — querem comer melhor, mas não querem abrir mão do sabor, ou gastar tempo cozinhando. A gente faz marmitas pra resolver isso, e é por isso que cada detalhe importa tanto pra gente. Não é só comida congelada, é comida feita com cuidado, pra chegar na casa de cada cliente com gostinho de comida caseira.
             </p>
           </motion.div>
 
-          {/* Lista de princípios — coluna direita */}
           <div className="flex flex-col lg:col-span-7">
             {principles.map(({ n, Icon, label, title, body }, i) => (
               <motion.article
@@ -123,7 +121,6 @@ export default function Products() {
                   borderBottom: '1px solid rgba(92,58,31,0.2)',
                 }}
               >
-                {/* Número grande, em serifa */}
                 <div className="col-span-2">
                   <span
                     style={{
@@ -188,7 +185,6 @@ export default function Products() {
           </div>
         </div>
 
-        {/* CTA — mais sóbrio, menos brilho */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -207,7 +203,7 @@ export default function Products() {
               lineHeight: 1.5,
             }}
           >
-            Pra começar, é só uma mensagem. A Vera responde — sempre.
+            Mande uma mensagem para conhecer os cardapios semanais, e combinarmos o seu kit, que mais faz sentido para o seu objetivo e rotina.
           </p>
 
           <motion.a
