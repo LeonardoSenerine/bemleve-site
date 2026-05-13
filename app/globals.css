@@ -61,6 +61,20 @@
 
 html {
   scroll-behavior: smooth;
+  /* Compensa o header fixo — âncoras param logo abaixo dele, não atrás */
+  scroll-padding-top: 100px;
+}
+
+/* Respeitar usuários que pediram menos animação no SO */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Sections com âncora — escala da margem para conforto visual */
+section[id] {
+  scroll-margin-top: 100px;
 }
 
 body {

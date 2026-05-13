@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
+import { smoothScrollToAnchor } from "@/lib/scroll";
 
 const navLinks = [
   { label: "História", href: "#historia" },
   { label: "Princípios", href: "#produtos" },
-  { label: "Cadernos", href: "#ebooks" },
+  { label: "eBooks", href: "#ebooks" },
   { label: "Contato", href: "#footer" },
 ];
 
@@ -20,6 +21,18 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    e.preventDefault();
+    smoothScrollToAnchor(href);
+    // Atualiza o hash sem causar jump
+    if (history.pushState) {
+      history.pushState(null, "", href);
+    }
+  };
 
   return (
     <motion.header
@@ -36,15 +49,23 @@ export default function Header() {
       style={{ backdropFilter: scrolled ? "blur(8px)" : "none" }}
     >
       <div className="container-site flex items-center justify-between gap-4 py-2">
-        {/* Logo */}
-        <a href="#inicio" className="flex flex-shrink-0 items-center">
+        {/* Logo — clica para voltar ao topo */}
+        <a
+          href="#inicio"
+          onClick={(e) => handleAnchorClick(e, "#inicio")}
+          className="flex flex-shrink-0 items-center"
+        >
           <Image
             src="/images/Logo.png"
             alt="Bem Leve Marmita Fit"
             width={84}
             height={84}
             priority
-            style={{ objectFit: "contain", width: "auto", height: "clamp(56px, 12vw, 84px)" }}
+            style={{
+              objectFit: "contain",
+              width: "auto",
+              height: "clamp(56px, 12vw, 84px)",
+            }}
           />
         </a>
 
@@ -54,10 +75,11 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleAnchorClick(e, link.href)}
               style={{
                 fontFamily: "var(--font-ui)",
                 fontSize: "clamp(0.78rem, 2.6vw, 0.92rem)",
-                fontWeight: 500,
+                fontWeight: 600,
                 color: "#3D2817",
                 transition: "color 0.2s",
                 letterSpacing: "0.01em",

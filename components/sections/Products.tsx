@@ -13,15 +13,15 @@ const principles = [
     label: 'Aqui na cozinha',
     title: 'A gente compra fresco. Sempre.',
     body:
-      'Toda semana fazemos pedido de ingredientes fresquinhos, escolhidos a dedo. A gente tem uma relação super próxima com cada fornecedor, e só compra o que a gente comeria na nossa casa. É o primeiro passo pra garantir que cada marmita chegue na sua casa com gostinho de comida caseira.',
+      'Toda semana a Vera escolhe pessoalmente os fornecedores — alface tem que vir com a terra ainda úmida, frango tem que ser do dia, peixe tem que cheirar a peixe. Nada que a gente não daria pra família.',
   },
   {
     n: '02',
     Icon: ClockIcon,
     label: 'Como chega à sua mesa',
-    title: 'Sete minutos entre o freezer e a fome.',
+    title: 'Dez minutos entre o freezer e a fome.',
     body:
-      'A gente faz pra resolver seu dia, não pra te dar mais um problema. Você tira do congelador, esquenta no micro-ondas ou banho-maria, e come. Sem louça suja, sem montagem, sem culpa, comendo bem, comendo gostoso, e pronto pra aproveitar o que importa.',
+      'A gente faz pra resolver seu dia, não pra te dar mais um problema. Você tira do congelador, esquenta no micro-ondas ou banho-maria, e come. Sem louça suja, sem montagem, sem culpa.',
   },
   {
     n: '03',
@@ -84,13 +84,11 @@ export default function Products() {
                 letterSpacing: '-0.02em',
               }}
             >
-              O que levamos a sério
+              O que a gente leva
               <span style={{ fontStyle: 'italic', fontWeight: 400 }}>
-                {' '}
-                aqui dentro.
+                {' '}a sério aqui dentro.
               </span>
             </h2>
-           
 
             <p
               className="mt-6"
@@ -102,7 +100,9 @@ export default function Products() {
                 maxWidth: '24rem',
               }}
             >
-              Sempre notei que as pessoas têm uma relação complicada com a comida — querem comer melhor, mas não querem abrir mão do sabor, ou gastar tempo cozinhando. A gente faz marmitas pra resolver isso, e é por isso que cada detalhe importa tanto pra gente. Não é só comida congelada, é comida feita com cuidado, pra chegar na casa de cada cliente com gostinho de comida caseira.
+              Não é embalagem bonita, não é estratégia de marketing. São três
+              compromissos que a Vera fez consigo mesma na primeira marmita
+              que vendeu — e a gente segue até hoje.
             </p>
           </motion.div>
 
@@ -116,8 +116,7 @@ export default function Products() {
                 transition={{ duration: 0.65, ease: EASE, delay: i * 0.08 }}
                 className="grid grid-cols-12 gap-5 py-8"
                 style={{
-                  borderTop:
-                    i === 0 ? '1px solid rgba(92,58,31,0.2)' : 'none',
+                  borderTop: i === 0 ? '1px solid rgba(92,58,31,0.2)' : 'none',
                   borderBottom: '1px solid rgba(92,58,31,0.2)',
                 }}
               >
@@ -203,7 +202,8 @@ export default function Products() {
               lineHeight: 1.5,
             }}
           >
-            Mande uma mensagem para conhecer os cardapios semanais, e combinarmos o seu kit, que mais faz sentido para o seu objetivo e rotina.
+            Manda mensagem que a Vera responde. A gente combina seu kit pelo
+            WhatsApp mesmo, sem formulário.
           </p>
 
           <motion.a

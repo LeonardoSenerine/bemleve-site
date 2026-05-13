@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { WhatsappIcon, ArrowRightIcon, PinIcon } from "../ui/Icons";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
+import { smoothScrollToAnchor } from "@/lib/scroll";
 import logo from "../../public/images/VeraImage.jpeg";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -37,7 +38,6 @@ export default function Hero() {
       className="relative flex min-h-[100dvh] items-center overflow-hidden"
       style={{ backgroundColor: "#FBF6EE" }}
     >
-      {/* Textura de papel sutil */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.4]"
@@ -49,7 +49,6 @@ export default function Hero() {
 
       <div className="container-site relative z-10 w-full py-28 lg:py-0">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-12">
-          {/* Coluna esquerda */}
           <div className="flex flex-col gap-8 lg:col-span-7 lg:pr-8">
             <motion.div
               variants={fadeUp(0.05)}
@@ -85,7 +84,7 @@ export default function Hero() {
               }}
             >
               <motion.span variants={fadeUp(0.15)} className="block">
-               Marmitas congeladas
+                A gente cozinha
               </motion.span>
               <motion.span
                 variants={fadeUp(0.28)}
@@ -96,7 +95,7 @@ export default function Hero() {
                   color: "#C44820",
                 }}
               >
-                com gostinho de comida caseira.
+                pra sua semana inteira.
               </motion.span>
             </motion.h1>
 
@@ -113,7 +112,9 @@ export default function Hero() {
                 maxWidth: "34rem",
               }}
             >
-              Somos de itatiba, interior de SP, e fazemos marmitas artesanais com ingredientes frescos e temperos caseiros. Nossas receitas são inspiradas na culinária brasileira, com um toque de criatividade e muito amor. Escolha suas marmitas favoritas e receba em casa toda semana.
+              Aqui em Itatiba, a Vera faz marmita congelada na panela — uma a
+              uma, com a mão dela e ingrediente fresco da feira. A gente faz
+              porque ama fazer. Esse é o trato.
             </motion.p>
 
             <motion.div
@@ -145,6 +146,11 @@ export default function Hero() {
 
               <motion.a
                 href="#ebooks"
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScrollToAnchor("#ebooks");
+                  if (history.pushState) history.pushState(null, "", "#ebooks");
+                }}
                 whileHover={{ x: 4 }}
                 className="group inline-flex items-center gap-2 px-3 py-3.5"
                 style={{
@@ -157,9 +163,10 @@ export default function Hero() {
                   paddingLeft: 0,
                   paddingRight: 4,
                   paddingBottom: 6,
+                  cursor: "pointer",
                 }}
               >
-                Ver eBooks
+                Ver ebooks da Vera
                 <ArrowRightIcon size={14} />
               </motion.a>
             </motion.div>
@@ -174,7 +181,7 @@ export default function Hero() {
               {[
                 { num: "+2.000", label: "marmitas por mês" },
                 { num: "5 anos", label: "de cozinha" },
-                { num: "+200k", label: "no Instagram" },
+                { num: "202k", label: "no Instagram" },
               ].map((s) => (
                 <div key={s.label} className="flex items-baseline gap-2">
                   <span
@@ -203,7 +210,6 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Coluna direita */}
           <motion.div
             variants={fadeIn(0.3)}
             initial="hidden"

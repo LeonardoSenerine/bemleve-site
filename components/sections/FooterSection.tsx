@@ -4,7 +4,9 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { WhatsappIcon, InstagramIcon, PinIcon } from '../ui/Icons'
 import { WHATSAPP_URL } from '@/lib/whatsapp'
+import { smoothScrollToAnchor } from '@/lib/scroll'
 import logo from "../../public/images/Logo.png"
+
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
 const navLinks = [
@@ -13,6 +15,12 @@ const navLinks = [
   { label: 'Cadernos',   href: '#ebooks'   },
 ]
 
+const handleAnchor = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  e.preventDefault()
+  smoothScrollToAnchor(href)
+  if (history.pushState) history.pushState(null, '', href)
+}
+
 export default function FooterSection() {
   return (
     <footer
@@ -20,7 +28,6 @@ export default function FooterSection() {
       className="relative overflow-hidden"
       style={{ background: '#241108' }}
     >
-      {/* Textura sobre o fundo escuro */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.5]"
@@ -30,7 +37,6 @@ export default function FooterSection() {
         }}
       />
 
-      {/* CTA Banner */}
       <div className="relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,10 +54,10 @@ export default function FooterSection() {
             letterSpacing: '-0.02em',
             maxWidth: '24rem',
           }}>
-            Mande uma mensagem.
+            Manda uma mensagem.
             <br />
             <span style={{ fontStyle: 'italic', fontWeight: 400, color: '#E8A572' }}>
-              Tire suas dúvidas.
+              A Vera responde.
             </span>
           </h2>
 
@@ -62,7 +68,8 @@ export default function FooterSection() {
             maxWidth: '26rem',
             lineHeight: 1.6,
           }}>
-            Monte seu kit semanal personalizado ou fale sobre os eBooks conosco.
+            Combine seu kit semanal direto pelo WhatsApp — sem formulário,
+            sem espera, sem chatbot.
           </p>
 
           <motion.a
@@ -83,7 +90,7 @@ export default function FooterSection() {
             }}
           >
             <WhatsappIcon size={16} stroke="#241108" />
-            Falar no WhatsApp
+            Falar com a Vera
           </motion.a>
         </motion.div>
       </div>
@@ -94,17 +101,18 @@ export default function FooterSection() {
         style={{ borderTop: '1px solid rgba(251,246,238,0.12)' }}
       />
 
-      {/* Linha de baixo */}
       <div className="container-site flex flex-col items-start gap-10 py-12 md:flex-row md:items-center md:justify-between">
-        {/* Logo + endereço */}
         <div className="flex flex-col gap-3">
-          <a href="#inicio">
+          <a
+            href="#inicio"
+            onClick={(e) => handleAnchor(e, '#inicio')}
+            style={{ cursor: 'pointer' }}
+          >
             <Image
               src={logo.src}
               alt="Bem Leve"
               width={120}
               height={120}
-              
             />
           </a>
           <div
@@ -121,12 +129,12 @@ export default function FooterSection() {
           </div>
         </div>
 
-        {/* Links de navegação */}
         <nav className="flex gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleAnchor(e, link.href)}
               style={{
                 fontFamily: 'var(--font-ui)',
                 fontSize: '0.86rem',
@@ -134,6 +142,7 @@ export default function FooterSection() {
                 fontWeight: 500,
                 transition: 'color 0.2s',
                 letterSpacing: '0.01em',
+                cursor: 'pointer',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = '#E8A572' }}
               onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(251,246,238,0.65)' }}
@@ -143,7 +152,6 @@ export default function FooterSection() {
           ))}
         </nav>
 
-        {/* Socials */}
         <div className="flex items-center gap-3">
           <a
             href="https://instagram.com/bemleve_marmitafit"
@@ -190,7 +198,6 @@ export default function FooterSection() {
         </div>
       </div>
 
-      {/* Copyright */}
       <div
         className="container-site pb-8 pt-4 text-center"
         style={{ borderTop: '1px solid rgba(251,246,238,0.08)' }}
