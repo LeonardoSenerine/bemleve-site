@@ -60,8 +60,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
-  /* Compensa o header fixo — âncoras param logo abaixo dele, não atrás */
+  /* scroll-behavior é controlado por JS (lib/scroll.ts) para evitar conflito de animações */
   scroll-padding-top: 100px;
 }
 
@@ -72,8 +71,9 @@ html {
   }
 }
 
-/* Sections com âncora — escala da margem para conforto visual */
-section[id] {
+/* Elementos com âncora — compensa o header fixo */
+section[id],
+footer[id] {
   scroll-margin-top: 100px;
 }
 

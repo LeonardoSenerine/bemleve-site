@@ -84,7 +84,7 @@ export default function Hero() {
               }}
             >
               <motion.span variants={fadeUp(0.15)} className="block">
-                A gente cozinha
+                Marmitas congeladas
               </motion.span>
               <motion.span
                 variants={fadeUp(0.28)}
@@ -95,7 +95,7 @@ export default function Hero() {
                   color: "#C44820",
                 }}
               >
-                pra sua semana inteira.
+                com gostinho de comida caseira
               </motion.span>
             </motion.h1>
 
@@ -112,9 +112,11 @@ export default function Hero() {
                 maxWidth: "34rem",
               }}
             >
-              Aqui em Itatiba, a Vera faz marmita congelada na panela — uma a
-              uma, com a mão dela e ingrediente fresco da feira. A gente faz
-              porque ama fazer. Esse é o trato.
+              Somos de Itatiba, interior de SP, e fazemos marmitas artesanais
+              com ingredientes frescos e tempeiros caseiros. Nossas receitas são
+              inspiradas na culinária brasiliera, com um toque de criatividade e
+              muito amor. Trabalhamos com Kits, peça já e receba marmitas para o
+              tempo que precisar!!
             </motion.p>
 
             <motion.div
